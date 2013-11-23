@@ -77,7 +77,12 @@ class GuzzleClient extends AbstractClient
         try {
 
             // Create request
-            $request = $this->getClient()->createRequest($method, $endpoint->getAbsoluteUri(), $extraHeaders, $requestBody);
+            $request = $this->getClient()->createRequest(
+                $method,
+                $endpoint->getAbsoluteUri(),
+                $extraHeaders,
+                $requestBody
+            );
             $request->getParams()->set('redirect.max', $this->maxRedirects);
             $request->getCurlOptions()->set(CURLOPT_TIMEOUT, $this->timeout);
 
