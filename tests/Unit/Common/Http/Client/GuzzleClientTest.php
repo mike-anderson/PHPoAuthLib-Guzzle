@@ -52,7 +52,6 @@ class GuzzleClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers OAuth\Common\Http\Client\GuzzleClient::retrieveResponse
-     * @covers OAuth\Common\Http\Client\GuzzleClient::generateStreamContext
      */
     public function testRetrieveResponseDefaultUserAgent()
     {
@@ -80,7 +79,6 @@ class GuzzleClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers OAuth\Common\Http\Client\GuzzleClient::retrieveResponse
-     * @covers OAuth\Common\Http\Client\GuzzleClient::generateStreamContext
      */
     public function testRetrieveResponseCustomUserAgent()
     {
@@ -108,7 +106,6 @@ class GuzzleClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers OAuth\Common\Http\Client\GuzzleClient::retrieveResponse
-     * @covers OAuth\Common\Http\Client\GuzzleClient::generateStreamContext
      */
     public function testRetrieveResponseWithCustomContentType()
     {
@@ -136,7 +133,6 @@ class GuzzleClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers OAuth\Common\Http\Client\GuzzleClient::retrieveResponse
-     * @covers OAuth\Common\Http\Client\GuzzleClient::generateStreamContext
      */
     public function testRetrieveResponseWithFormUrlEncodedContentType()
     {
@@ -165,7 +161,6 @@ class GuzzleClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers OAuth\Common\Http\Client\GuzzleClient::retrieveResponse
-     * @covers OAuth\Common\Http\Client\GuzzleClient::generateStreamContext
      */
     public function testRetrieveResponseHost()
     {
@@ -193,7 +188,6 @@ class GuzzleClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers OAuth\Common\Http\Client\GuzzleClient::retrieveResponse
-     * @covers OAuth\Common\Http\Client\GuzzleClient::generateStreamContext
      */
     public function testRetrieveResponsePostRequestWithRequestBodyAsString()
     {
@@ -221,7 +215,6 @@ class GuzzleClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers OAuth\Common\Http\Client\GuzzleClient::retrieveResponse
-     * @covers OAuth\Common\Http\Client\GuzzleClient::generateStreamContext
      */
     public function testRetrieveResponsePutRequestWithRequestBodyAsString()
     {
@@ -249,7 +242,6 @@ class GuzzleClientTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @covers OAuth\Common\Http\Client\GuzzleClient::retrieveResponse
-     * @covers OAuth\Common\Http\Client\GuzzleClient::generateStreamContext
      */
     public function testRetrieveResponseThrowsExceptionOnInvalidRequest()
     {
