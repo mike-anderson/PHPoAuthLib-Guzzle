@@ -12,6 +12,7 @@ use OAuth\Common\Http\Exception\TokenResponseException;
 use OAuth\Common\Http\Uri\UriInterface;
 use Guzzle\Http\ClientInterface as GuzzleClientInterface;
 use Guzzle\Service\Client;
+use Guzzle\Http\Exception\CurlException;
 
 /**
  * Client interface for GuzzlePHP.org
@@ -74,13 +75,21 @@ class GuzzleClient extends AbstractClient
         }
 
         try {
-            $response = $this->getClient()->createRequest($method, $endpoint->getAbsoluteUri(), $extraHeaders, $requestBody)->send();
 
-            if ( $response->getStatusCode() >= 400 ) {
-                throw new TokenResponseException('Server returned HTTP response code ' . $response->getStatusCode() );
+            // Create request
+            $request = $this->getClient()->createRequest($method, $endpoint->getAbsoluteUri(), $extraHeaders, $requestBody);
+            $request->getParams()->set('redirect.max', $this->maxRedirects);
+            $request->getCurlOptions()->set(CURLOPT_TIMEOUT, $this->timeout);
+
+            // Get response
+            $response = $request->send();
+
+            // Check response
+            if ($response->getStatusCode() >= 400) {
+                throw new TokenResponseException('Server returned HTTP response code '.$response->getStatusCode());
             }
-        } catch (\Guzzle\Http\Exception\CurlException $e) {
-            throw new TokenResponseException( 'Guzzle client error: ' . $e->getMessage() );
+        } catch (CurlException $e) {
+            throw new TokenResponseException('Guzzle client error: ' . $e->getMessage());
         }
 
         return $response->getBody(true);
