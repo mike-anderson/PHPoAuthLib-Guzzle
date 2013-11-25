@@ -1,8 +1,7 @@
-
 {
-    "name": "lusitanian/oauth-guzzle",
-    "description": "PHP 5.3+ oAuth 1/2 Library",
-    "keywords": ["oauth", "authentication", "authorization", "security"],
+    "name": "jcid/oauth-guzzle",
+    "description": "Guzzle client for oauth",
+    "keywords": ["OAuth", "Lusitanian", "guzzle", "php"],
     "license": "MIT",
     "authors": [
         {
