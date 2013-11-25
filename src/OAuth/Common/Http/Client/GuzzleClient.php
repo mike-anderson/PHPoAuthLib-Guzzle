@@ -7,6 +7,7 @@
 
 namespace OAuth\Common\Http\Client;
 
+use OAuth\Common\Http\Client\Response;
 use OAuth\Common\Http\Client\AbstractClient;
 use OAuth\Common\Http\Exception\TokenResponseException;
 use OAuth\Common\Http\Uri\UriInterface;
@@ -97,6 +98,6 @@ class GuzzleClient extends AbstractClient
             throw new TokenResponseException('Guzzle client error: ' . $e->getMessage());
         }
 
-        return $response->getBody(true);
+        return new Response($response->getBody(true), $response->getStatusCode(), $response->getHeaders()->toArray());
     }
 }
