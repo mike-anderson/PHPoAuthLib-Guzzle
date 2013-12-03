@@ -14,6 +14,7 @@ use OAuth\Common\Http\Uri\UriInterface;
 use Guzzle\Http\ClientInterface as GuzzleClientInterface;
 use Guzzle\Service\Client;
 use Guzzle\Http\Exception\CurlException;
+use Guzzle\Http\Exception\BadResponseException;
 
 /**
  * Client interface for GuzzlePHP.org
@@ -94,6 +95,8 @@ class GuzzleClient extends AbstractClient
             if ($response->getStatusCode() >= 400) {
                 throw new TokenResponseException('Server returned HTTP response code '.$response->getStatusCode());
             }
+        } catch (BadResponseException $e) {
+            throw new TokenResponseException('Guzzle client error: ' . $e->getMessage());
         } catch (CurlException $e) {
             throw new TokenResponseException('Guzzle client error: ' . $e->getMessage());
         }
