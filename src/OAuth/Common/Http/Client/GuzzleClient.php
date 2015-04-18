@@ -95,9 +95,9 @@ class GuzzleClient extends AbstractClient
                 throw new TokenResponseException('Server returned HTTP response code '.$response->getStatusCode());
             }
         } catch (BadResponseException $e) {
-            throw new TokenResponseException('Guzzle client error: ' . $e->getMessage());
+            throw new TokenResponseException('Guzzle client error: ' . $e->getMessage(), null, $e);
         } catch (CurlException $e) {
-            throw new TokenResponseException('Guzzle client error: ' . $e->getMessage());
+            throw new TokenResponseException('Guzzle client error: ' . $e->getMessage(), null, $e);
         }
 
         return $response->getBody(true);
